@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LENCO | Liber Energy Contractor - Industrial EPC Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Ergonomic, eye-friendly typography pairing: Outfit (Headings) & Inter (Body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Softened, eye-comfort palette (reduced harsh contrast & glare) */
+      --primary: #122b4d;
+      --primary-dark: #0b1a30;
+      --primary-light: #1e4579;
+      --accent: #cf3427;
+      --accent-hover: #b2261b;
+      --accent-glow: rgba(207, 52, 39, 0.22);
+      --dark: #0b1320;
+      --surface: #ffffff;
+      --surface-subtle: #f8fafc;
+      --surface-border: #e2e8f0;
+      --text-main: #2d3748;      /* Warm charcoal instead of harsh pure black */
+      --text-muted: #5a6a85;     /* Soft slate grey for comfortable reading */
+      --text-light: #9aa8bd;
+      --container-max: 1380px;
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-main);
+      background-color: var(--surface-subtle);
+      line-height: 1.75;
+      font-size: 15.5px;
+      overflow-x: hidden;
+      position: relative;
+      letter-spacing: -0.011em;
+    }
+
+    /* Subtle Technical Blueprint Background Grid */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        linear-gradient(to right, rgba(18, 43, 77, 0.028) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(18, 43, 77, 0.028) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Professional Sweep Animations */
+    @keyframes lightSweep {
+      0% {
+        transform: translateX(-150%) skewX(-25deg);
+      }
+      50%, 100% {
+        transform: translateX(250%) skewX(-25deg);
+      }
+    }
+
+    @keyframes ambientPulse {
+      0%, 100% { opacity: 0.22; transform: scale(1); }
+      50% { opacity: 0.38; transform: scale(1.05); }
+    }
+
+    .sweep-element {
+      position: relative;
+      overflow: hidden;
+    }
+    .sweep-element::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 0;
+      width: 60%;
+      height: 140%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.16) 45%,
+        rgba(255, 255, 255, 0.28) 50%,
+        rgba(255, 255, 255, 0.16) 55%,
+        transparent 100%
+      );
+      transform: translateX(-150%) skewX(-25deg);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .sweep-element:hover::after {
+      animation: lightSweep 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Top Strip */
+    .top-strip {
+      background: var(--dark);
+      color: var(--text-light);
+      font-size: 0.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      position: relative;
+      z-index: 101;
+    }
+    .top-strip .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.55rem;
+      padding-bottom: 0.55rem;
+    }
+    .top-info {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+    }
+    .top-info a, .top-info span {
+      color: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: var(--transition);
+    }
+    .top-info a:hover {
+      color: #fff;
+    }
+    .badge-pill {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.32);
+      color: #4ade80;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .badge-pill::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #4ade80;
+    }
+
+    /* Sticky Navigation */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--surface-border);
+      transition: var(--transition);
+    }
+    .site-header.scrolled {
+      box-shadow: 0 8px 24px rgba(18, 43, 77, 0.06);
+    }
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+    }
+
+    /* Authentic LENCO Logo */
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+    .logo-main {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.15rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .logo-sphere {
+      display: inline-block;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      margin-left: 3px;
+      background: radial-gradient(circle at 35% 30%, #ff5b4d 0%, var(--accent) 55%, #8f170d 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset -1px -2px 5px rgba(0,0,0,0.35), 0 3px 8px var(--accent-glow);
+    }
+    .logo-sphere::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.42),
+        rgba(255, 255, 255, 0.42) 1.5px,
+        transparent 1.5px,
+        transparent 3.5px
+      );
+      mix-blend-mode: overlay;
+    }
+    .logo-sub {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #334a65;
+      border-top: 1.5px solid #cbd5e1;
+      padding-top: 3px;
+      margin-top: 2px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Menu Links */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-decoration: none;
+      position: relative;
+      padding: 0.4rem 0;
+      transition: var(--transition);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--primary);
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Mobile Hamburger Button */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      color: var(--primary);
+    }
+
+    /* Buttons with sweep reflection */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.6rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+      transform: skewX(-25deg);
+      pointer-events: none;
+      transition: none;
+    }
+    .btn:hover::after {
+      animation: lightSweep 1s forwards;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(207, 52, 39, 0.36);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--primary-dark) 55%, var(--primary) 100%);
+      color: #fff;
+      padding: 6.8rem 0 5.8rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-glow-1 {
+      position: absolute;
+      top: -120px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(207, 52, 39, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+      animation: ambientPulse 8s ease-in-out infinite;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -150px;
+      left: 10%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(30, 69, 121, 0.45) 0%, transparent 70%);
+      pointer-events: none;
+      animation: ambientPulse 10s ease-in-out infinite reverse;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      text-align: left;
+    }
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fca5a5;
+      background: rgba(207, 52, 39, 0.14);
+      border: 1px solid rgba(207, 52, 39, 0.32);
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.4rem;
+      line-height: 1.15;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.025em;
+    }
+    .hero-title span {
+      background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title .accent-text {
+      background: linear-gradient(90deg, #ff6b6b 0%, #ff8a80 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #b0c0d6;
+      margin-bottom: 2.2rem;
+      line-height: 1.8;
+      max-width: 620px;
+      font-weight: 400;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    /* Hero Dashboard Metric Box */
+    .hero-panel {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 2.2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+      position: relative;
+    }
+    .hero-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+      border-radius: 14px 14px 0 0;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .panel-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e2e8f0;
+    }
+    .panel-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+    .metric-box {
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 1.25rem;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    .metric-box:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(0, 0, 0, 0.35);
+      transform: translateY(-2px);
+    }
+    .metric-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+    }
+    .metric-val .symbol {
+      color: var(--accent);
+      font-size: 1.4rem;
+    }
+    .metric-label {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    .framework-tags {
+      margin-top: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .f-tag {
+      font-size: 0.74rem;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    /* Section Headers */
+    .section-header-left {
+      text-align: left;
+      margin-bottom: 3.5rem;
+      max-width: 760px;
+    }
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 14px;
+      height: 2px;
+      background: var(--accent);
+    }
+    .section-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.35rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      margin-bottom: 1rem;
+    }
+    .section-subtext {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 6.5rem 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 4.5rem;
+      align-items: center;
+    }
+    .about-points {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .about-point-card {
+      display: flex;
+      gap: 1.25rem;
+      background: var(--surface-subtle);
+      border: 1px solid var(--surface-border);
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem 1.45rem;
+      border-radius: 6px;
+      transition: var(--transition);
+    }
+    .about-point-card:hover {
+      border-left-color: var(--accent);
+      transform: translateX(4px);
+      box-shadow: 0 6px 18px rgba(18, 43, 77, 0.05);
+    }
+    .point-icon {
+      font-size: 1.3rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .point-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    .point-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Facility Card */
+    .facility-card {
+      background: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 40px rgba(18, 43, 77, 0.16);
+      position: relative;
+      overflow: hidden;
+    }
+    .facility-card::after {
+      content: 'LENCO';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 6rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.035);
+      pointer-events: none;
+    }
+    .facility-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #fca5a5;
+      margin-bottom: 1rem;
+    }
+    .facility-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .facility-specs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .facility-spec-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+    .facility-spec-item span:first-child {
+      color: #b0c0d6;
+    }
+    .facility-spec-item span:last-child {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Activity Sectors */
+    .sectors-section {
+      padding: 6.5rem 0;
+      background: var(--surface-subtle);
+    }
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .sector-card {
+      background: #ffffff;
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .sector-card:hover {
+      border-color: rgba(207, 52, 39, 0.35);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(18, 43, 77, 0.07);
+    }
+    .sector-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .sector-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+    .sector-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+    .sector-link {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: auto;
+      transition: var(--transition);
+    }
+    .sector-card:hover .sector-link {
+      color: var(--accent);
+      gap: 0.65rem;
+    }
+
+    /* EPC Cycle */
+    .epc-section {
+      padding: 6.5rem 0;
+      background: #ffffff;
+      border-top: 1px solid var(--surface-border);
+    }
+    .epc-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .epc-card {
+      background: var(--surface-subtle);
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 1.8rem 1.4rem;
+      position: relative;
+      transition: var(--transition);
+    }
+    .epc-card:hover {
+      background: #ffffff;
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(18, 43, 77, 0.05);
+    }
+    .epc-letter {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      opacity: 0.22;
+      line-height: 1;
+      margin-bottom: 0.8rem;
+      transition: var(--transition);
+    }
+    .epc-card:hover .epc-letter {
+      opacity: 1;
+      color: var(--accent);
+    }
+    .epc-step-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+    .epc-step-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Standards Bar */
+    .standards-section {
+      background: var(--dark);
+      color: #fff;
+      padding: 5.5rem 0;
+      position: relative;
+    }
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+    .standard-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 1.8rem;
+      transition: var(--transition);
+    }
+    .standard-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .std-badge {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fca5a5;
+      margin-bottom: 0.75rem;
+    }
+    .std-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .std-desc {
+      font-size: 0.86rem;
+      color: #a3b3c9;
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 6.5rem 0;
+      background: var(--surface-subtle);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .location-box {
+      background: #fff;
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent);
+      transition: var(--transition);
+    }
+    .location-box:hover {
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+    .loc-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .loc-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+    .loc-address {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Form Styles */
+    .form-wrapper {
+      background: #ffffff;
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 2.8rem;
+      box-shadow: 0 15px 35px rgba(18, 43, 77, 0.04);
+    }
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      font-family: inherit;
+      font-size: 0.92rem;
+      border: 1px solid var(--surface-border);
+      border-radius: 6px;
+      background: var(--surface-subtle);
+      transition: var(--transition);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(18, 43, 77, 0.08);
+    }
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--dark);
+      color: #9aa8bd;
+      padding: 4.5rem 0 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 3.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .footer-col h4 {
+      font-family: 'Outfit', sans-serif;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .footer-links a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .footer-links a:hover {
+      color: #fff;
+      padding-left: 4px;
+    }
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+
+    /* Modal Feedback Toast */
+    .toast-modal {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #122b4d;
+      color: #fff;
+      padding: 1.2rem 1.6rem;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.28);
+      border-left: 4px solid #4ade80;
+      z-index: 9999;
+      transform: translateY(150%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .toast-modal.show {
+      transform: translateY(0);
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 290px;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 999;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.12);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer.open {
+      right: 0;
+    }
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 19, 32, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .drawer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-top: 2.5rem;
+    }
+    .drawer-links a {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    /* Scroll Reveal Animation Classes */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Breakpoint Handling */
+    @media (max-width: 1024px) {
+      .hero-grid, .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .sectors-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .epc-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .standards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.35rem;
+      }
+      .sectors-grid, .epc-grid, .standards-grid, .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .top-strip {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Informational Strip -->
+  <div class="top-strip">
+    <div class="container">
+      <div class="top-info">
+        <a href="tel:+21671290200">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          (+216) 71 290 200
+        </a>
+        <a href="mailto:contact@lenco.com.tn">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          contact@lenco.com.tn
+        </a>
+        <span>GP1 Km 14, Ezzahra, Ben Arous – Tunisia</span>
+      </div>
+      <div>
+        <span class="badge-pill">Shell International Standard: Green Banding Rank "Green"</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#home" class="brand-logo">
+          <div class="logo-main">
+            LENC<span class="logo-sphere"></span>
+          </div>
+          <div class="logo-sub">Liber Energy Contractor</div>
+        </a>
+
+        <ul class="nav-menu">
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#sectors" class="nav-link">Activity Sectors</a></li>
+          <li><a href="#epc" class="nav-link">EPC Lifecycle</a></li>
+          <li><a href="#standards" class="nav-link">Standards</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <a href="#contact" class="btn btn-primary" style="display: none; @media(min-width: 769px){display: inline-flex;}">
+            Request Proposal
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <!-- Mobile Menu Toggle Button -->
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <span style="font-family:'Outfit',sans-serif; font-weight:700; color:var(--primary); font-size:1.1rem;">Menu</span>
+      <button id="closeDrawerBtn" style="background:none; border:none; cursor:pointer; color:var(--text-main); font-size:1.3rem;">✕</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#about" class="drawer-nav-item">About Us</a></li>
+      <li><a href="#sectors" class="drawer-nav-item">Activity Sectors</a></li>
+      <li><a href="#epc" class="drawer-nav-item">EPC Lifecycle</a></li>
+      <li><a href="#standards" class="drawer-nav-item">Standards</a></li>
+      <li><a href="#contact" class="drawer-nav-item">Contact</a></li>
+    </ul>
+    <div style="margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--surface-border);">
+      <a href="tel:+21671290200" class="btn btn-primary" style="width:100%; justify-content:center;">
+        Call Technical Office
+      </a>
+    </div>
+  </div>
+
+  <!-- Asymmetric Hero Section with Sweep and Ambient Glow -->
+  <section class="hero-section" id="home">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content reveal-on-scroll">
+          <div class="hero-tagline">
+            <span>●</span> General Contractor in Tunisia & International
+          </div>
+          <h1 class="hero-title">
+            Turnkey <span>EPC Projects</span> in <span class="accent-text">Energy & Industry</span>
+          </h1>
+          <p class="hero-desc">
+            LENCO (Liber Energy Contractor) is specialized in the realization of EPC projects in Energy, Oil & Gas, Mining, Water Treatment & Pumping, and Heavy Industrial Infrastructure strictly governed by the PMBOK® Guide.
+          </p>
+          <div class="hero-actions">
+            <a href="#sectors" class="btn btn-primary">Explore Activity Sectors</a>
+            <a href="#about" class="btn btn-secondary">Company Overview</a>
+          </div>
+        </div>
+
+        <div class="hero-panel sweep-element reveal-on-scroll">
+          <div class="panel-header">
+            <div class="panel-title">Industrial Capabilities</div>
+            <div style="font-size:0.8rem; color:#4ade80;">● Standard Compliant</div>
+          </div>
+          <div class="panel-metrics-grid">
+            <div class="metric-box sweep-element">
+              <div class="metric-val">100<span class="symbol">%</span></div>
+              <div class="metric-label">PMBOK® Lifecycle</div>
+            </div>
+            <div class="metric-box sweep-element">
+              <div class="metric-val">Rank<span class="symbol" style="color:#4ade80;">●</span></div>
+              <div class="metric-label">Shell Green Banding</div>
+            </div>
+            <div class="metric-box sweep-element">
+              <div class="metric-val">API<span class="symbol">650</span></div>
+              <div class="metric-label">Tank Farms & Piping</div>
+            </div>
+            <div class="metric-box sweep-element">
+              <div class="metric-val">ASME<span class="symbol">VIII</span></div>
+              <div class="metric-label">Pressure Vessels</div>
+            </div>
+          </div>
+          <div class="framework-tags">
+            <span class="f-tag">ISO 9001</span>
+            <span class="f-tag">ISO 14000</span>
+            <span class="f-tag">CODAP</span>
+            <span class="f-tag">CODRES</span>
+            <span class="f-tag">Turnkey EPC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Overview (About Us) -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal-on-scroll">
+          <div class="section-header-left">
+            <div class="section-eyebrow">At A Glance</div>
+            <h2 class="section-heading">Integrated EPC Contractor for Major Industrial Realizations</h2>
+            <p class="section-subtext">
+              LENCO is a general contracting company specialized in the realization of EPC projects in Energy, Oil & Gas, Mining and Derivates, Water Treatment & Pumping and generally in Energy. LENCO designs and builds infrastructure, particularly in the Energy, Hydraulics and Environment Sectors.
+            </p>
+          </div>
+
+          <div class="about-points">
+            <div class="about-point-card sweep-element">
+              <div class="point-icon">✦</div>
+              <div>
+                <h4 class="point-title">Stringent QHSE Compliance</h4>
+                <p class="point-desc">LENCO operates with uncompromising adherence to International Standards in terms of Quality, Hygiene, Safety, Security, and Environmental Protection.</p>
+              </div>
+            </div>
+            <div class="about-point-card sweep-element">
+              <div class="point-icon">✦</div>
+              <div>
+                <h4 class="point-title">PMBOK® Management Methodology</h4>
+                <p class="point-desc">Every turnkey undertaking follows strict Project Management Body of Knowledge methodologies to ensure on-time delivery, cost control, and engineering accuracy.</p>
+              </div>
+            </div>
+            <div class="about-point-card sweep-element">
+              <div class="point-icon">✦</div>
+              <div>
+                <h4 class="point-title">Full Turnkey Project Lifecycle</h4>
+                <p class="point-desc">From front-end engineering design to procurement, precision workshop fabrication, on-site erection, startup, revamping, and routine operational maintenance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal-on-scroll">
+          <div class="facility-card sweep-element">
+            <div class="facility-tag">Industrial Infrastructure</div>
+            <h3 class="facility-title">Production & Operational Hub</h3>
+            <p style="color:#b0c0d6; font-size:0.95rem; line-height:1.7; margin-bottom:1.5rem;">
+              Our dedicated fabrication workshop in the Industrial Zone of Ben Arous supports high-capacity metal transformation, pre-assembly of skids, plate rolling, and heavy structural assemblies.
+            </p>
+            <ul class="facility-specs">
+              <li class="facility-spec-item">
+                <span>Workshop Location</span>
+                <span>51 Soof Street, Ben Arous</span>
+              </li>
+              <li class="facility-spec-item">
+                <span>Head Office</span>
+                <span>GP1 Km 14, Ezzahra</span>
+              </li>
+              <li class="facility-spec-item">
+                <span>Design Standards</span>
+                <span>ASME, API, CODAP, CODRES</span>
+              </li>
+              <li class="facility-spec-item">
+                <span>Shell Safety Ranking</span>
+                <span style="color:#4ade80;">Green Banding "Green"</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activity Sectors Grid -->
+  <section class="sectors-section" id="sectors">
+    <div class="container">
+      <div class="section-header-left reveal-on-scroll">
+        <div class="section-eyebrow">Serving Industries</div>
+        <h2 class="section-heading">Activity Sectors</h2>
+        <p class="section-subtext">Specialized engineering disciplines delivering proven turnkey EPC reliability across critical infrastructure.</p>
+      </div>
+
+      <div class="sectors-grid">
+        <!-- 01 -->
+        <div class="sector-card sweep-element reveal-on-scroll">
+          <div>
+            <div class="sector-number">SECTOR 01</div>
+            <h3 class="sector-title">Water Treatment & Pumping Plants</h3>
+            <p class="sector-desc">
+              Complete engineering, procurement, and construction of turnkey water intake, municipal pumping stations, effluent treatment complexes, and high-pressure fluid networks.
+            </p>
+          </div>
+          <span class="sector-link">EPC Specifications &rarr;</span>
+        </div>
+
+        <!-- 02 -->
+        <div class="sector-card sweep-element reveal-on-scroll">
+          <div>
+            <div class="sector-number">SECTOR 02</div>
+            <h3 class="sector-title">Mining & Chemical Process</h3>
+            <p class="sector-desc">
+              Turnkey process units, chemical synthesis systems, sulfur handling, acid units, slurry pumping, and harsh-environment mechanical installations.
+            </p>
+          </div>
+          <span class="sector-link">EPC Specifications &rarr;</span>
+        </div>
+
+        <!-- 03 -->
+        <div class="sector-card sweep-element reveal-on-scroll">
+          <div>
+            <div class="sector-number">SECTOR 03</div>
+            <h3 class="sector-title">Tank Farm, Pipeline & Piping</h3>
+            <p class="sector-desc">
+              Design and assembly of API 650 vertical hydrocarbon tanks, pressurized LPG storage spheres, cross-country pipelines, and certified plant piping spools.
+            </p>
+          </div>
+          <span class="sector-link">EPC Specifications &rarr;</span>
+        </div>
+
+        <!-- 04 -->
+        <div class="sector-card sweep-element reveal-on-scroll">
+          <div>
+            <div class="sector-number">SECTOR 04</div>
+            <h3 class="sector-title">Steel Work & Heavy Structures</h3>
+            <p class="sector-desc">
+              Workshop fabrication and site erection of industrial pipe racks, process towers, structural shelters, heavy industrial boilermaking, and skids.
+            </p>
+          </div>
+          <span class="sector-link">EPC Specifications &rarr;</span>
+        </div>
+
+        <!-- 05 -->
+        <div class="sector-card sweep-element reveal-on-scroll">
+          <div>
+            <div class="sector-number">SECTOR 05</div>
+            <h3 class="sector-title">Smart Building & Data Center</h3>
+            <p class="sector-desc">
+              Critical electrical supply systems, HVAC precision climate containment, BMS integration, fire suppression networks, and mission-critical power systems.
+            </p>
+          </div>
+          <span class="sector-link">EPC Specifications &rarr;</span>
+        </div>
+
+        <!-- 06 -->
+        <div class="sector-card sweep-element reveal-on-scroll">
+          <div>
+            <div class="sector-number">SECTOR 06</div>
+            <h3 class="sector-title">Smart Industry & Energy Management</h3>
+            <p class="sector-desc">
+              SCADA instrumentation, automated utility control, industrial energy efficiency audits, and smart industrial automation solutions.
+            </p>
+          </div>
+          <span class="sector-link">EPC Specifications &rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The EPC Cycle -->
+  <section class="epc-section" id="epc">
+    <div class="container">
+      <div class="section-header-left reveal-on-scroll">
+        <div class="section-eyebrow">Project Execution</div>
+        <h2 class="section-heading">The PMBOK® Guided EPC Life Cycle</h2>
+        <p class="section-subtext">Executing projects end-to-end with disciplined quality benchmarks and rigorous milestones.</p>
+      </div>
+
+      <div class="epc-grid">
+        <div class="epc-card sweep-element reveal-on-scroll">
+          <div class="epc-letter">E</div>
+          <h4 class="epc-step-title">Engineering</h4>
+          <p class="epc-step-desc">FEED, thermal & stress sizing, 3D modeling, isometric generation, and calculations compliant with API/ASME.</p>
+        </div>
+        <div class="epc-card sweep-element reveal-on-scroll">
+          <div class="epc-letter">P</div>
+          <h4 class="epc-step-title">Procurement</h4>
+          <p class="epc-step-desc">Strategic raw material sourcing, certified valves, certified piping, logistics, and quality control inspections.</p>
+        </div>
+        <div class="epc-card sweep-element reveal-on-scroll">
+          <div class="epc-letter">C</div>
+          <h4 class="epc-step-title">Construction</h4>
+          <p class="epc-step-desc">Civil foundation, yard pre-assembly, on-site erection, high-precision certified welding, and NDT verification.</p>
+        </div>
+        <div class="epc-card sweep-element reveal-on-scroll">
+          <div class="epc-letter">S</div>
+          <h4 class="epc-step-title">Start-Up</h4>
+          <p class="epc-step-desc">Hydrostatic testing, calibration, loop checks, commissioning, and operational handover.</p>
+        </div>
+        <div class="epc-card sweep-element reveal-on-scroll">
+          <div class="epc-letter">M</div>
+          <h4 class="epc-step-title">Revamping</h4>
+          <p class="epc-step-desc">Routine shutdown maintenance, unit upgrades, re-tubing, and lifespan extension of existing infrastructure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- International Standards -->
+  <section class="standards-section" id="standards">
+    <div class="container">
+      <div class="section-header-left reveal-on-scroll">
+        <div class="section-eyebrow" style="color:#fca5a5;">Compliance & Quality</div>
+        <h2 class="section-heading" style="color:#fff;">Certified International Standards</h2>
+        <p class="section-subtext" style="color:#a3b3c9;">LENCO executes every assignment in full accordance with leading international engineering codes.</p>
+      </div>
+
+      <div class="standards-grid">
+        <div class="standard-item sweep-element reveal-on-scroll">
+          <div class="std-badge">Safety First</div>
+          <h4 class="std-title">Shell International</h4>
+          <p class="std-desc">Ranked "Green" under the Shell International Green Banding evaluation, certifying top-tier safety and execution standards.</p>
+        </div>
+        <div class="standard-item sweep-element reveal-on-scroll">
+          <div class="std-badge">North American</div>
+          <h4 class="std-title">API 650 & ASME VIII</h4>
+          <p class="std-desc">Industry-standard codes for welded atmospheric storage tanks and pressurized boiler vessel fabrication.</p>
+        </div>
+        <div class="standard-item sweep-element reveal-on-scroll">
+          <div class="std-badge">European</div>
+          <h4 class="std-title">CODAP & CODRES</h4>
+          <p class="std-desc">French & European construction codes governing unfired pressure vessels and cylindrical atmospheric storage tanks.</p>
+        </div>
+        <div class="standard-item sweep-element reveal-on-scroll">
+          <div class="std-badge">Management Systems</div>
+          <h4 class="std-title">ISO 9001 & 14000</h4>
+          <p class="std-desc">Comprehensive Quality and Environmental Management Systems implemented across head office and workshop operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Location -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal-on-scroll">
+          <div class="section-header-left" style="margin-bottom:2rem;">
+            <div class="section-eyebrow">Locations & Inquiries</div>
+            <h2 class="section-heading">Connect with our Engineering Team</h2>
+            <p class="section-subtext">Direct consultation for upcoming tenders, engineering studies, or fabrication requirements.</p>
+          </div>
+
+          <div class="location-box sweep-element">
+            <div class="loc-label">Headquarters / Project Office</div>
+            <h3 class="loc-title">Ezzahra Office</h3>
+            <p class="loc-address">GP1 Km 14, Office N°8 & N°9, 11 Street Elferdaous, Ezzahra, Ben Arous – Tunisia</p>
+          </div>
+
+          <div class="location-box sweep-element">
+            <div class="loc-label">Fabrication Facility</div>
+            <h3 class="loc-title">Ben Arous Workshop</h3>
+            <p class="loc-address">51 Soof Street, Industrial Zone of Ben Arous, Tunisia</p>
+          </div>
+
+          <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.5rem; font-size:0.95rem;">
+            <div><strong>Telephone:</strong> <a href="tel:+21671290200" style="color:var(--primary); text-decoration:none;">(+216) 71 290 200</a></div>
+            <div><strong>Email:</strong> <a href="mailto:contact@lenco.com.tn" style="color:var(--primary); text-decoration:none;">contact@lenco.com.tn</a></div>
+          </div>
+        </div>
+
+        <div class="form-wrapper reveal-on-scroll">
+          <h3 style="font-family:'Outfit',sans-serif; font-size:1.4rem; margin-bottom:1.2rem; color:var(--primary-dark);">Request a Project Consultation</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label class="form-label" for="clientName">Full Name / Organization</label>
+              <input type="text" id="clientName" class="form-control" placeholder="e.g. Energy Corporation" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="clientEmail">Corporate Email</label>
+              <input type="email" id="clientEmail" class="form-control" placeholder="name@company.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="clientSector">Project Activity Sector</label>
+              <select id="clientSector" class="form-control" required>
+                <option value="">Select Sector...</option>
+                <option value="Water Treatment">Water Treatment & Pumping Plants</option>
+                <option value="Mining & Chemical">Mining & Chemical Process</option>
+                <option value="Tank Farm & Piping">Tank farm, Pipeline & Piping</option>
+                <option value="Steel Work">Steel Work & Heavy Structures</option>
+                <option value="Smart Buildings">Smart Building & Data Center</option>
+                <option value="Energy Management">Smart Industry & Energy Management</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="clientMessage">Scope & Project Details</label>
+              <textarea id="clientMessage" class="form-control" placeholder="Briefly describe project requirements, location, and timeline..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+              Submit Tender / RFQ Inquiry
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo-main" style="color:#fff; margin-bottom:0.75rem;">
+            LENC<span class="logo-sphere"></span>
+          </div>
+          <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.18em; color:#cbd5e1; margin-bottom:1.2rem; font-family:'Inter',sans-serif;">Liber Energy Contractor</div>
+          <p style="font-size:0.875rem; line-height:1.7; color:#9aa8bd;">
+            General contracting company specialized in the realization of turnkey EPC projects in Energy, Oil & Gas, Mining, Water Treatment & Pumping, and generally in Energy.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Activity Sectors</h4>
+          <ul class="footer-links">
+            <li><a href="#sectors">Water Treatment & Pumping</a></li>
+            <li><a href="#sectors">Mining & Chemical Process</a></li>
+            <li><a href="#sectors">Tank Farms & Piping</a></li>
+            <li><a href="#sectors">Steel Structures</a></li>
+            <li><a href="#sectors">Smart Data Centers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Compliance</h4>
+          <ul class="footer-links">
+            <li><a href="#standards">Shell Green Banding</a></li>
+            <li><a href="#standards">API 650 & ASME VIII</a></li>
+            <li><a href="#standards">CODAP / CODRES</a></li>
+            <li><a href="#standards">ISO 9001 / ISO 14000</a></li>
+            <li><a href="#epc">PMBOK® Management</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact Hub</h4>
+          <p style="font-size:0.875rem; color:#9aa8bd; line-height:1.6; margin-bottom:0.8rem;">
+            Office: GP1 Km 14, Ezzahra, Ben Arous<br>
+            Yard: 51 Soof Street, Z.I. Ben Arous
+          </p>
+          <p style="font-size:0.875rem; color:#fff;">
+            Tel: (+216) 71 290 200<br>
+            Email: contact@lenco.com.tn
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 LENCO (Liber Energy Contractor). All rights reserved.</div>
+        <div>Engineered to International Standards</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Confirmation Toast -->
+  <div class="toast-modal" id="toastModal">
+    <svg width="24" height="24" fill="none" stroke="#4ade80" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    <div>
+      <div style="font-weight:700; font-size:0.95rem;">Inquiry Transmitted</div>
+      <div style="font-size:0.825rem; color:#cbd5e1;">Your request has been routed to the technical office at contact@lenco.com.tn.</div>
+    </div>
+  </div>
+
+  <script>
+    // Sticky Header Scroll Effect
+    const siteHeader = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        siteHeader.classList.add('scrolled');
+      } else {
+        siteHeader.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile Drawer Controls
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const drawerOverlay = document.getElementById('drawerOverlay');
+    const drawerNavItems = document.querySelectorAll('.drawer-nav-item');
+
+    function openDrawer() {
+      mobileDrawer.classList.add('open');
+      drawerOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      mobileDrawer.classList.remove('open');
+      drawerOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openDrawer);
+    if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+    drawerNavItems.forEach(item => item.addEventListener('click', closeDrawer));
+
+    // Scroll Reveal Intersection Observer
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Form Handling
+    const contactForm = document.getElementById('contactForm');
+    const toastModal = document.getElementById('toastModal');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      toastModal.classList.add('show');
+      contactForm.reset();
+      setTimeout(() => {
+        toastModal.classList.remove('show');
+      }, 5000);
+    });
+
+    // Sector Card Click Interactive Focus
+    document.querySelectorAll('.sector-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const sectorName = card.querySelector('.sector-title').innerText;
+        const select = document.getElementById('clientSector');
+        for (let i = 0; i < select.options.length; i++) {
+          if (sectorName.includes(select.options[i].text.split(' ')[0])) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
